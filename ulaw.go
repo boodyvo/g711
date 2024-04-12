@@ -80,8 +80,8 @@ func EncodeUlaw(lpcm []byte) []byte {
 	if len(lpcm) < 2 {
 		return []byte{}
 	}
-	ulaw := make([]byte, len(lpcm)/2)
-	for i, j := 0, 0; j <= len(lpcm)-2; i, j = i+1, j+2 {
+	ulaw := make([]byte, len(lpcm)/4)
+	for i, j := 0, 0; j <= len(lpcm)-2; i, j = i+1, j+4 {
 		ulaw[i] = EncodeUlawFrame(int16(lpcm[j]) | int16(lpcm[j+1])<<8)
 	}
 	return ulaw
